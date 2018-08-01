@@ -1,0 +1,19 @@
+diff -ENwbur android-ndk-r17b/sysroot/usr/include/stdio.h android-ndk-r17b-hack/sysroot/usr/include/stdio.h
+--- android-ndk-r17b/sysroot/usr/include/stdio.h	2018-06-07 16:04:40.000000000 +0000
++++ android-ndk-r17b-hack/sysroot/usr/include/stdio.h	2018-08-01 06:48:23.955432419 +0000
+@@ -69,11 +69,11 @@
+ #define stderr stderr
+ #else
+ /* Before M the actual symbols for stdin and friends had different names. */
+-extern FILE __sF[] __REMOVED_IN(23);
++// FILE __sF[] = {};
+ 
+-#define stdin (&__sF[0])
+-#define stdout (&__sF[1])
+-#define stderr (&__sF[2])
++#define stdin ((FILE*)0)
++#define stdout ((FILE*)1)
++#define stderr ((FILE*)2)
+ #endif
+ 
+ /*
